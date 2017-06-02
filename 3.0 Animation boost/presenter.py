@@ -252,6 +252,4 @@ def click_search():
     s.onclick(click, 1)
     turtle.mainloop()
 
-
 click_search()
-
