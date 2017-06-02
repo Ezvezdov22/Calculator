@@ -1,6 +1,6 @@
-v. 1.0 - calculator start.
-v. 2.0 - reformat code, Resizing the grid, new numbers font.
-v. 2.1 - sqrt change.
+v. 1.0 - Calculator start.
+v. 2.0 - Resizing the grid, new numbers font.
+v. 2.1 - Reformat code, sqrt change.
 v. 2.2 - Change the mechanics of the answer, you can use it in a new example
 v. 2.3 - Negative numbers are introduced
-v. 2.4 - Update the animation, fixed a bug with a quick push of the buttons. Fix bug with a sqrt and a negative number. A new example can begin without pressing "clear".
+v. 3.0 - Update the animation, fixed a bug with a quick push of the buttons. Fix bug with a sqrt and a negative number. A new example can begin without pressing "clear".
