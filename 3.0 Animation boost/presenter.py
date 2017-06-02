@@ -227,41 +227,6 @@ def click_search():
             view.clearonce()
             model.xy[0] -= 30
             model.update()
-        # if x > 0 and x < 80 and y < 80 and y > 0:
-        #     previous_def()
-        #     model.Task.append("sqrt")
-        #     model.Task.append("=")
-        #     model.last.append(18)
-        #     view.painter(model.ClickSymbols, 17)
-        #     view.painter(model.ClickSymbols, 18)
-        #     model.update()
-        #     previous.clear()
-        #     previous.append(answer.search_answer())
-        #     if previous[-1] != "error":
-        #         print_answer(previous[-1])
-        #     else:
-        #         view.painter(model.ClickSymbols, 19)
-        #         view.painter(model.ClickSymbols, 20)
-        #         view.painter(model.ClickSymbols, 21)
-        #         view.painter(model.ClickSymbols, 22)
-        #         view.painter(model.ClickSymbols, 23)
-        # if x < 80 and x > 0 and y < -240:
-        #     previous_def()
-        #     model.Task.append("=")
-        #     model.last.append(18)
-        #     view.painter(model.ClickSymbols, 17)
-        #     view.painter(model.ClickSymbols, 18)
-        #     model.update()
-        #     previous.clear()
-        #     previous.append(answer.search_answer())
-        #     if previous[-1] != "error":
-        #         print_answer(previous[-1])
-        #     else:
-        #         view.painter(model.ClickSymbols, 19)
-        #         view.painter(model.ClickSymbols, 20)
-        #         view.painter(model.ClickSymbols, 21)
-        #         view.painter(model.ClickSymbols, 22)
-        #         view.painter(model.ClickSymbols, 23)
         if x < 80 and x > 0 and y < -240 or x > 0 and x < 80 and y < 80 and y > 0:
             previous_def()
             if x > 0 and x < 80 and y < 80 and y > 0:
