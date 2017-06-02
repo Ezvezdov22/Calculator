@@ -165,13 +165,6 @@ def click_search():
             model.last.append(10)
             view.painter(model.ClickSymbols, 10)
             model.update()
-        if x > 80 and y < -160 and y > -240:
-            previous_def()
-            del_act()
-            model.Task.append("+")
-            model.last.append(11)
-            view.painter(model.ClickSymbols, 11)
-            model.update()
         if x > 80 and y < -240:
             if len(model.Task) == 0 and len(model.last) == 0 and len(previous) == 1:
                 if previous[-1][0] != "-":
@@ -194,16 +187,23 @@ def click_search():
                     view.painter(model.ClickSymbols, 24)
                 model.last.append(999)
                 model.update()
-        if x > 80 and y < 0 and y > -80:
-            del_act()
+        if x > 80 and y < -160 and y > -240:
             previous_def()
+            del_act()
+            model.Task.append("+")
+            model.last.append(11)
+            view.painter(model.ClickSymbols, 11)
+            model.update()
+        if x > 80 and y < 0 and y > -80:
+            previous_def()
+            del_act()
             model.Task.append("*")
             model.last.append(12)
             view.painter(model.ClickSymbols, 12)
             model.update()
         if x > 80 and y < 80 and y > 0:
-            del_act()
             previous_def()
+            del_act()
             model.Task.append("/")
             model.last.append(15)
             view.painter(model.ClickSymbols, 13)
@@ -211,8 +211,8 @@ def click_search():
             view.painter(model.ClickSymbols, 15)
             model.update()
         if x > 80 and y < -80 and y > -160:
-            del_act()
             previous_def()
+            del_act()
             model.Task.append("-")
             model.last.append(16)
             view.painter(model.ClickSymbols, 16)
@@ -227,6 +227,7 @@ def click_search():
             view.clearonce()
             model.xy[0] -= 30
             model.update()
+
         if x < 80 and x > 0 and y < -240 or x > 0 and x < 80 and y < 80 and y > 0:
             previous_def()
             if x > 0 and x < 80 and y < 80 and y > 0:
