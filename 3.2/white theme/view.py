@@ -52,7 +52,7 @@ def clearall():
 def clearonce(xy):
     t.width(1)
     t.penup()
-    t.goto(xy[0] - 7, xy[1] - 55)
+    t.goto(xy[0]- 7, xy[1] - 55)
     t.begin_fill()
     t.goto(xy[0] + 27, xy[1] - 55)
     t.goto(xy[0] + 27, xy[1] + 16)

@@ -5,38 +5,20 @@ import answer
 
 s = turtle.Screen()
 previous = []
-
+allnumbers = "01234567890-."
 view.painter(model.SymbolsPrint, 0)
 
 
 def print_answer(answer):
     model.last.append("end")
     for i in range(len(answer)):
-        if answer[i] == '0':
-            view.painter(model.ClickSymbols, 0)
-        elif answer[i] == '1':
-            view.painter(model.ClickSymbols, 1)
-        elif answer[i] == '2':
-            view.painter(model.ClickSymbols, 2)
-        elif answer[i] == '3':
-            view.painter(model.ClickSymbols, 3)
-        elif answer[i] == '4':
-            view.painter(model.ClickSymbols, 4)
-        elif answer[i] == '5':
-            view.painter(model.ClickSymbols, 5)
-        elif answer[i] == '6':
-            view.painter(model.ClickSymbols, 6)
-        elif answer[i] == '7':
-            view.painter(model.ClickSymbols, 7)
-        elif answer[i] == '8':
-            view.painter(model.ClickSymbols, 8)
-        elif answer[i] == '9':
-            view.painter(model.ClickSymbols, 9)
-        elif answer[i] == '.':
+        if answer[i] == ".":
             model.last.append(".")
             view.painter(model.ClickSymbols, 10)
-        elif answer[i] == '-':
+        elif answer[i] == "-":
             view.painter(model.ClickSymbols, 24)
+        else:
+            view.painter(model.ClickSymbols,int(answer[i]))
         model.update()
         if model.last[-1] == ".":
             model.last.append("end")
@@ -53,35 +35,51 @@ def previous_def():
         model.update()
         for i in range(len(previous[-1])):
             model.Task.append(previous[-1][i])
-            if previous[-1][i] == '0':
-                view.painter(model.ClickSymbols, 0)
-            elif previous[-1][i] == '1':
-                view.painter(model.ClickSymbols, 1)
-            elif previous[-1][i] == '2':
-                view.painter(model.ClickSymbols, 2)
-            elif previous[-1][i] == '3':
-                view.painter(model.ClickSymbols, 3)
-            elif previous[-1][i] == '4':
-                view.painter(model.ClickSymbols, 4)
-            elif previous[-1][i] == '5':
-                view.painter(model.ClickSymbols, 5)
-            elif previous[-1][i] == '6':
-                view.painter(model.ClickSymbols, 6)
-            elif previous[-1][i] == '7':
-                view.painter(model.ClickSymbols, 7)
-            elif previous[-1][i] == '8':
-                view.painter(model.ClickSymbols, 8)
-            elif previous[-1][i] == '9':
-                view.painter(model.ClickSymbols, 9)
-            elif previous[-1][i] == '.':
+            if previous[-1][i] == '.':
                 model.last.append(".")
                 view.painter(model.ClickSymbols, 10)
-            elif previous[-1][i] == '-':
+            elif previous[-1][i] == "-":
                 view.painter(model.ClickSymbols, 24)
+            else:
+                view.painter(model.ClickSymbols, int(previous[-1][i]))
             model.last.append(999)
             if model.last.count(".") == 1:
                 del model.last[-1]
             model.update()
+
+
+
+
+def print_number(number):
+    if len(model.Task) == 0 and len(model.last) == 0 and len(previous) == 1:
+        view.clearall()
+        model.xy = [-150, 300]
+        model.last.append(999)
+        model.update()
+    # elif model.last[-1] == "end":
+        # if model.last[-2] != "minus":
+        #     model.Task.clear()
+        #     model.last.clear()
+
+
+    for i in range(len(number)):
+        model.Task.append(previous[-1][i])
+        if number[i] == '.':
+            model.last.append(".")
+            view.painter(model.ClickSymbols, 10)
+        elif previous[-1][i] == "-":
+            view.painter(model.ClickSymbols, 24)
+        else:
+            view.painter(model.ClickSymbols, int(number[i]))
+            if model.last.count(".") == 1:
+                del model.last[-1]
+        model.update()
+
+
+
+
+
+
 def new_start():
     if len(model.Task) == 1 and len(model.last) == 1 and len(previous) == 1:
         view.clearall()
@@ -93,6 +91,36 @@ def del_act():
         del model.Task[-1]
         model.xy = [-150,220]
         view.clearonce(model.xy)
+
+def del_number():
+    if model.Task.count("+") == 1:
+        index = model.Task.index("+")
+    elif model.Task.count("minus") == 1:
+        index = model.Task.index("minus")
+    elif model.Task.count("*") == 1:
+        index = model.Task.index("*")
+    elif model.Task.count("/") == 1:
+        index = model.Task.index("/")
+    if model.last.count('act') == 0 and len(model.Task) >= 10:
+        model.xy[0] -= 30
+        del model.Task[-1]
+        if model.Task[-1] != "=":
+            view.clearonce(model.xy)
+        model.xy[0] -= 30
+        model.update()
+        view.paintercounter.clear()
+        view.paintercounter.append(0)
+        view.painter(model.SymbolsPrint, 0)
+    if model.last.count("act") == 1:
+        if len(model.Task[index:]) >= 11:
+            model.xy[0] -= 30
+            del model.Task[-1]
+            view.clearonce(model.xy)
+            model.xy[0] -= 30
+            model.update()
+            view.paintercounter.clear()
+            view.paintercounter.append(0)
+            view.painter(model.SymbolsPrint, 0)
 
 def click_search():
     def click(x, y):
@@ -251,6 +279,7 @@ def click_search():
             previous_def()
             if x > 0 and x < 80 and y < 80 and y > 0:
                 model.Task.append("sqrt")
+            del_number()
             model.Task.append("=")
             model.last.append("=")
             view.painter(model.ClickSymbols, 17)
@@ -259,6 +288,7 @@ def click_search():
             previous.clear()
             previous.append(answer.search_answer(model.Task))
             if previous[-1] != "error":
+                model.last.append("end")
                 print_answer(previous[-1])
             else:
                 view.painter(model.ClickSymbols, 19)
@@ -266,6 +296,9 @@ def click_search():
                 view.painter(model.ClickSymbols, 21)
                 view.painter(model.ClickSymbols, 22)
                 view.painter(model.ClickSymbols, 23)
+        del_number()
+
+
 
         turtle.update()
     s.onclick(click, 1)
