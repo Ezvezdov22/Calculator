@@ -8,8 +8,8 @@ t.shape("blank")
 s = turtle.Screen()
 s.title("Calculator 3.2")
 s.setup(width=400, height=700, startx=720, starty=100)
-s.bgcolor("black")
-turtle.color("white","black")
+s.bgcolor("white")
+turtle.color("black","white")
 turtle.tracer(0, 0)
 
 

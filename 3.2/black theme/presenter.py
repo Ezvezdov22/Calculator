@@ -12,31 +12,13 @@ view.painter(model.SymbolsPrint, 0)
 def print_answer(answer):
     model.last.append("end")
     for i in range(len(answer)):
-        if answer[i] == '0':
-            view.painter(model.ClickSymbols, 0)
-        elif answer[i] == '1':
-            view.painter(model.ClickSymbols, 1)
-        elif answer[i] == '2':
-            view.painter(model.ClickSymbols, 2)
-        elif answer[i] == '3':
-            view.painter(model.ClickSymbols, 3)
-        elif answer[i] == '4':
-            view.painter(model.ClickSymbols, 4)
-        elif answer[i] == '5':
-            view.painter(model.ClickSymbols, 5)
-        elif answer[i] == '6':
-            view.painter(model.ClickSymbols, 6)
-        elif answer[i] == '7':
-            view.painter(model.ClickSymbols, 7)
-        elif answer[i] == '8':
-            view.painter(model.ClickSymbols, 8)
-        elif answer[i] == '9':
-            view.painter(model.ClickSymbols, 9)
-        elif answer[i] == '.':
+        if answer[i] == '.':
             model.last.append(".")
             view.painter(model.ClickSymbols, 10)
         elif answer[i] == '-':
             view.painter(model.ClickSymbols, 24)
+        else:
+            view.painter(model.ClickSymbols, int(answer[i]))
         model.update()
         if model.last[-1] == ".":
             model.last.append("end")
@@ -52,33 +34,15 @@ def previous_def():
         model.last.append(999)
         model.update()
         for i in range(len(previous[-1])):
+            print(model.last)
             model.Task.append(previous[-1][i])
-            if previous[-1][i] == '0':
-                view.painter(model.ClickSymbols, 0)
-            elif previous[-1][i] == '1':
-                view.painter(model.ClickSymbols, 1)
-            elif previous[-1][i] == '2':
-                view.painter(model.ClickSymbols, 2)
-            elif previous[-1][i] == '3':
-                view.painter(model.ClickSymbols, 3)
-            elif previous[-1][i] == '4':
-                view.painter(model.ClickSymbols, 4)
-            elif previous[-1][i] == '5':
-                view.painter(model.ClickSymbols, 5)
-            elif previous[-1][i] == '6':
-                view.painter(model.ClickSymbols, 6)
-            elif previous[-1][i] == '7':
-                view.painter(model.ClickSymbols, 7)
-            elif previous[-1][i] == '8':
-                view.painter(model.ClickSymbols, 8)
-            elif previous[-1][i] == '9':
-                view.painter(model.ClickSymbols, 9)
-            elif previous[-1][i] == '.':
+            if previous[-1][i] == '.':
                 model.last.append(".")
                 view.painter(model.ClickSymbols, 10)
             elif previous[-1][i] == '-':
                 view.painter(model.ClickSymbols, 24)
-            model.last.append(999)
+            else:
+                view.painter(model.ClickSymbols, int(previous[-1][i]))
             if model.last.count(".") == 1:
                 del model.last[-1]
             model.update()

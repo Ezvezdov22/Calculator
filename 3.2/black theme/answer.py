@@ -5,7 +5,7 @@ def search_answer(task):
     mission = ""
     task = task[:-1]
     if len(task) > 2:
-        if task[-1] == "0" and task[-2] == "/":  # or ('+' and '*' and '/' and '-' and 'sqrt')  in task:
+        if task[-1] == "0" and task[-2] == "/":
             return "error"
     if task.count("sqrt") == 1:
         task = task[:-1]
